@@ -35,7 +35,6 @@ function Signup() {
         className="text-center flex flex-col justify-between items-center bg-slate-900 w-full max-w-md rounded-[6px] p-10 shadow shadow-indigo-900"
       >
         <h1 className="font-medium text-3xl mb-6">Register</h1>
-
         <label htmlFor="inputFile">
           <img
             src={
@@ -48,51 +47,100 @@ function Signup() {
           />
         </label>
         {/* <label htmlFor="inputFile" className="">Upload Profile Picture</label> */}
-
         <input
           type="file"
           id="inputFile"
           className="mb-4 text-white hidden"
           onChange={handleImageChange}
         />
-
         <div className="flex flex-row justify-between gap-2 items-center">
           <input
             type="text"
             placeholder="First Name"
             className="border border-slate-800 py-2 px-2 w-full rounded-[10px] mb-4 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-slate-900"
-            {...register("firstName")}
+            {...register("firstName", {
+              required: "Name is required",
+              minLength: {
+                value: 3,
+                message: "Name must be at least 3 characters",
+              },
+            })}
           ></input>
 
           <input
             type="text"
             placeholder="last Name"
             className="border border-slate-800 py-2 px-2 w-full rounded-[10px] mb-4 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-slate-900"
-            {...register("lastName")}
+            {...register("lastName", {
+              required: "Last Name is required",
+              minLength: {
+                value: 3,
+                message: " Last Name must be at least 3 characters",
+              },
+            })}
           ></input>
         </div>
+        {errors.firstName && (
+          <p className="text-red-600 mb-4 mt-[-10px]">
+            {errors.firstName.message}
+          </p>
+        )}
+
         <input
           type="text"
           className="border border-slate-800 py-2 px-2 w-full rounded-[10px] mb-4 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-slate-900"
           placeholder="User Name"
-          {...register("userName")}
+          {...register("userName", {
+            required: "UserName is required",
+            minLength: {
+              value: 3,
+              message: " UserName must be at least 5 characters",
+            },
+          })}
         />
+        {errors.userName && (
+          <p className="text-red-600 mb-4 mt-[-10px]">
+            {errors.userName.message}
+          </p>
+        )}
         <input
           type="email"
           className="border border-slate-800 py-2 px-2 w-full rounded-[10px] mb-4 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-slate-900"
           placeholder="email@abc.com"
-          {...register("email")}
+          {...register("email", {
+            required: "Email is required",
+          })}
         />
+
+        {errors.email && (
+          <p className="text-red-600 mb-4 mt-[-10px]">{errors.email.message}</p>
+        )}
+
         <input
           type="password"
           className="border border-slate-800 py-2 px-2 w-full rounded-[10px] mb-4 focus:outline-none focus:ring-2 focus:ring-slate-800 focus:border-slate-900"
-          placeholder="Password"
+          placeholder="Password (at least 6 charachter)"
+          {...register("password", {
+            required: "Password is required",
+            minLength: {
+              value: 6,
+              message: " Password must be at least 6 characters",
+            },
+          })}
           {...register("password")}
         />
+
+        {errors.password && (
+          <p className="text-red-600 mb-4 mt-[-10px]">
+            {errors.password.message}
+          </p>
+        )}
+
         <p className="mb-6">
           Already have an account?{" "}
           <span className="cursor-pointer text-blue-400">Login</span>
         </p>
+
         <button className="bg-slate-700 text-[18px] py-2 px-6 rounded-2xl shadow shadow-indigo-950 cursor-pointer">
           Register
         </button>

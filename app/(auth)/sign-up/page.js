@@ -36,21 +36,23 @@ function Signup() {
       >
         <h1 className="font-medium text-3xl mb-6">Register</h1>
 
-        <img
-          src={
-            selectedImage
-              ? URL.createObjectURL(selectedImage)
-              : "/profilePlaceholder.png"
-          }
-          className="h-28 w-28 mb-4 rounded-full object-cover"
-          alt="Profile Preview"
-        />
+        <label htmlFor="inputFile">
+          <img
+            src={
+              selectedImage
+                ? URL.createObjectURL(selectedImage)
+                : "/profilePlaceholder.png"
+            }
+            className="h-28 w-28 mb-4 rounded-full object-cover cursor-pointer"
+            alt="Profile Preview"
+          />
+        </label>
+        {/* <label htmlFor="inputFile" className="">Upload Profile Picture</label> */}
 
-        {/* File Input */}
         <input
           type="file"
-          accept="image/*"
-          className="mb-4 text-white"
+          id="inputFile"
+          className="mb-4 text-white hidden"
           onChange={handleImageChange}
         />
 

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-950">
@@ -15,7 +17,9 @@ function Login() {
         />
         <p className="mb-6">
           Don't have an account?{" "}
-          <span className="cursor-pointer text-blue-400">signup</span>
+          <Link href="/sign-up">
+            <span className="cursor-pointer text-blue-400">signup</span>
+          </Link>
         </p>
         <button className="bg-slate-700 text-[18px] py-2 px-6 rounded-2xl shadow shadow-indigo-950 cursor-pointer">
           Login

@@ -1,13 +1,14 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 
 function Signup() {
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm();
   const [selectedImage, setSelectedImage] = useState();
@@ -20,14 +21,15 @@ function Signup() {
     if (extension === "jpg" || extension === "png" || extension === "jpeg") {
       setSelectedImage(file);
       setValue("image", file);
-    } else toast.error("Only image is allowed.");
-    console.log(event.target.files[0]);
+    } else {
+      toast.error("Only image is allowed.");
+    }
   };
-
   const onSubmit = (data) => console.log(data);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-950">
+      <Toaster />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="text-center flex flex-col justify-between items-center bg-slate-900 w-full max-w-md rounded-[6px] p-10 shadow shadow-indigo-900"
@@ -41,21 +43,15 @@ function Signup() {
               : "/profilePlaceholder.png"
           }
           className="h-28 w-28 mb-4 rounded-full object-cover"
-          alt="Profile"
-        ></img>
-        <label
-          htmlFor="input-file"
-          className="bg-slate-700 mb-4 py-2 px-4 rounded-[4px]"
-        >
-          {" "}
-          Upload Profile Picture
-        </label>
+          alt="Profile Preview"
+        />
+
+        {/* File Input */}
         <input
-          id="input-file"
           type="file"
+          accept="image/*"
+          className="mb-4 text-white"
           onChange={handleImageChange}
-          {...register("image")}
-          className="hidden"
         />
 
         <div className="flex flex-row justify-between gap-2 items-center">

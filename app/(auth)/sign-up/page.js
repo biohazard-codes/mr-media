@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
+import Link from "next/link";
 
 function Signup() {
   const {
@@ -138,7 +139,9 @@ function Signup() {
 
         <p className="mb-6">
           Already have an account?{" "}
-          <span className="cursor-pointer text-blue-400">Login</span>
+          <Link href="/sign-in">
+            <span className="cursor-pointer text-blue-400">Login</span>
+          </Link>
         </p>
 
         <button className="bg-slate-700 text-[18px] py-2 px-6 rounded-2xl shadow shadow-indigo-950 cursor-pointer">

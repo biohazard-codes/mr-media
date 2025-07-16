@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+  --font-rubik: "Rubik", sans-serif;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  font-family: var(--font-rubik);
+  background-color: oklch(12.9% 0.042 264.695);
+  color: white;
+  margin: 0 auto;
+}

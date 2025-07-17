@@ -1,7 +1,7 @@
 function Logout() {
   return (
     <>
-      <div>THIS WILL MAKE THHEM LOGOUT HEHEHE</div>
+      <div className="min-h-screen">THIS WILL MAKE THHEM LOGOUT HEHEHE</div>
     </>
   );
 }

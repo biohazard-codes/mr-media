@@ -32,8 +32,8 @@ function Signup() {
     <div className="flex items-center justify-center min-h-screen bg-gray-950">
       <Toaster />
       <form
+        className="text-center flex flex-col justify-between items-center bg-slate-900 mx-6 w-110 rounded-[6px] p-10 shadow shadow-indigo-900"
         onSubmit={handleSubmit(onSubmit)}
-        className="text-center flex flex-col justify-between items-center bg-slate-900 w-full max-w-md rounded-[6px] p-10 shadow shadow-indigo-900"
       >
         <h1 className="font-medium text-3xl mb-6">Register</h1>
         <label htmlFor="inputFile">
@@ -128,7 +128,6 @@ function Signup() {
               message: " Password must be at least 6 characters",
             },
           })}
-          {...register("password")}
         />
 
         {errors.password && (

@@ -2,8 +2,12 @@ import HomeFeed from "@/components/HomeFeed";
 function Home() {
   return (
     <>
-      <div className="flex justify-center mt-10">
-        <HomeFeed />
+      <div className="flex mt-10 flex-col items-center">
+        <HomeFeed image="/mr.png" />
+
+        <HomeFeed image="/post2.png" />
+
+        <HomeFeed image="/landscape.png" />
       </div>
     </>
   );

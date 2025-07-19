@@ -18,13 +18,13 @@ const layout = ({ children }) => {
   const userName = "sky";
   return (
     <div className="flex flex-row  ">
-      <main className="ml-70 flex-1  p-6 bg-slate-900 min-h-screen">
+      <main className="md:ml-70 flex-1  p-[8px] bg-slate-900 min-h-screen ">
         {children}
       </main>
-      <div className=" min-h-screen fixed w-70">
+      <div className=" min-h-screen fixed w-70 hidden md:block ">
         {/* this line ^ */}
 
-        <div className=" flex flex-col pl-4 [&_span]:pb-10 w-full">
+        <div className=" flex md:flex-col flex-row pl-4 [&_span]:pb-10 w-full">
           {/* this line ^ */}
           <h1 className="font-bold text-3xl py-6 ">Mr Media</h1>
 

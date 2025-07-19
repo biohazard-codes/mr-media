@@ -17,25 +17,35 @@ const layout = ({ children }) => {
 
   const userName = "sky";
   return (
-    <div className="flex flex-row justify-left ">
-      <div className=" min-h-screen border fixed border-slate-950 w-70 ">
-        <div className=" flex flex-col pl-4 [&_span]:pb-10 ">
+    <div className="flex flex-row  ">
+      <main className="ml-70 flex-1  p-6 bg-slate-900 min-h-screen">
+        {children}
+      </main>
+      <div className=" min-h-screen fixed w-70">
+        {/* this line ^ */}
+
+        <div className=" flex flex-col pl-4 [&_span]:pb-10 w-full">
+          {/* this line ^ */}
           <h1 className="font-bold text-3xl py-6 ">Mr Media</h1>
 
-          <span className="item-center pb-[-100px]">
+          <span className="">
             <Link
-              href="/profile"
-              className={`flex hover:bg-slate-900 p-4 rounded-2xl mr-2 ${
-                basePath === "/profile" ? "font-bold" : ""
-              } `}
+              href="/profile/1"
+              className={`flex hover:bg-slate-900 p-4 rounded-2xl mr-2  w-auto flex-row items-center `}
             >
               <img
                 src="/profilePlaceholder.png"
                 className=" rounded-full h-10 w-10 object-cover"
               ></img>
-              <span className="flex flex-col justify-center mb-[-50px]">
+              <span
+                className={`flex flex-col justify-center mb-[-80px] ${
+                  basePath === "/profile/1" ? "font-bold" : ""
+                } `}
+              >
                 <span>&nbsp; Profile</span>
-                <span className="mt-[-50px] ml-2 font-thin">@{userName}</span>
+                <span className="mt-[-50px] ml-2  text-gray-600">
+                  @{userName}
+                </span>
               </span>
             </Link>
           </span>
@@ -105,10 +115,6 @@ const layout = ({ children }) => {
             </Link>
           </span>
         </div>
-      </div>
-
-      <div className="ml-70 flex-1  p-6 bg-slate-900 min-h-screen">
-        {children}
       </div>
     </div>
   );

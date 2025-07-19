@@ -4,7 +4,7 @@ function HomeFeed() {
   const usr = "userName";
   return (
     <>
-      <div className="border-none shadow-gray-700 shadow-2xl h-158 w-130 rounded-[16px] p-6 bg-slate-700 transition-all hover:shadow-slate-300 ">
+      <div className="border border-sky-800 shadow-md h-158 w-130 rounded-[16px] p-6 transition-all bg-[#192542] ">
         <div className=" flex flex-row mb-4 justify-between">
           <div className=" flex flex-row mb-4">
             <img
@@ -29,7 +29,7 @@ function HomeFeed() {
         <div className="flex justify- flex-col items-center">
           <img
             src="mr.png"
-            className="h-100 w-100 rounded-2xl object-cover mb-4"
+            className="h-100 w-158 rounded-2xl object-cover mb-4"
           />
         </div>
         <p className="">

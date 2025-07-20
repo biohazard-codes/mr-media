@@ -7,19 +7,19 @@ function Profile() {
   const post = "1 ";
   return (
     <section>
-      <div className="min-w-50 flex md:flex-row flex-col justify-between mb-20  md:px-50">
-        <div className="flex flex-row justify-left">
+      <div className="min-w-50 flex md:flex-row flex-col justify-between mb-20 md:mt-0 mt-20 md:px-50">
+        <div className="flex md:flex-row flex-col md:justify-left items-center justify-center ">
           <img
             src="/profilePlaceholder.png"
-            className="h-38 w-38 mb-4 rounded-full object-cover cursor-pointer"
+            className="h-38 w-38 mt-4 mb-4 rounded-full object-cover cursor-pointer"
           />
-          <div className="pl-8 pt-6">
+          <div className="md:pl-8 pt-6 text-center">
             <p className="text-3xl font-bold">Full Name</p>
-            <p className="text-[18px] text-slate-500 font-medium mb-10">
+            <p className="text-[18px] text-slate-500 font-medium md:mb-10">
               @{usr}
             </p>
             <p className="">
-              <span className="text-sky-300">{post}</span>Posts
+              <span className="text-sky-300 ">{post}</span>Posts
             </p>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { IconEdit } from "@tabler/icons-react";
 function HomeFeed(props) {
   const usr = "userName";
   return (
-    <div className="border border-sky-800 shadow-md max-w-[470px] rounded-[16px] p-[10px] transition-all bg-[#192542] mb-10">
+    <div className="border border-sky-800 shadow-md max-w-[470px] rounded-[16px] p-[10px] md:p-[16px] transition-all bg-[#192542] mb-10">
       <div className=" flex flex-row mb-4 justify-between">
         <div className=" flex flex-row mb-4">
           <img

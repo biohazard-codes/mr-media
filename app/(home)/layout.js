@@ -19,7 +19,7 @@ const layout = ({ children }) => {
   return (
     <>
       <div className="flex flex-row  ">
-        <main className="md:ml-70 flex-1  p-[8px] bg-slate-900 min-h-screen mb-10 md:mb-0">
+        <main className="md:ml-70 flex-1 p-[8px] bg-slate-900 min-h-screen mb-10 md:mb-0 ">
           {children}
         </main>
         <div className=" min-h-screen md:fixed w-70 hidden md:block ">
@@ -119,12 +119,27 @@ const layout = ({ children }) => {
         </div>
       </div>
       {/* here for movile */}
+      <div className="md:hidden flex flex-row bg-slate-950 fixed top-0 left-0 right-0 justify-around p-2 text-[10px]">
+        <h1 className="font-medium text-[16px] mt-2 ">Mr Media</h1>
 
-      <div className="md:hidden flex flex-row bg-slate-950 fixed bottom-0 left-0 right-0 justify-around p-2 text-[10px]">
-        <div>
+        <div className="flex flex-row justify-between text-right ml-40">
+          <Link
+            href="/logout"
+            className={`flex flex-col  justify-center items-center ${
+              basePath === "/logout" ? "font-bold" : ""
+            } `}
+          >
+            {basePath === "/logout" ? (
+              <IconLogout stroke={2} />
+            ) : (
+              <IconLogout stroke={1} />
+            )}{" "}
+            Log out
+          </Link>
+
           <Link
             href="/profile/1"
-            className="flex flex-col  justify-center items-center"
+            className="flex flex-col  justify-center pl-6 items-center"
           >
             <img
               src="/profilePlaceholder.png"
@@ -136,7 +151,11 @@ const layout = ({ children }) => {
             </p>
           </Link>
         </div>
+      </div>
 
+      {/* bottom stuffs */}
+
+      <div className="md:hidden flex flex-row bg-slate-950 fixed bottom-0 left-0 right-0 justify-around p-2 text-[10px]">
         <div>
           <Link
             href="/"
@@ -182,22 +201,6 @@ const layout = ({ children }) => {
               <IconBrandSafari stroke={1} />
             )}{" "}
             Discover
-          </Link>
-        </div>
-
-        <div>
-          <Link
-            href="/logout"
-            className={`flex flex-col  justify-center items-center ${
-              basePath === "/logout" ? "font-bold" : ""
-            } `}
-          >
-            {basePath === "/logout" ? (
-              <IconLogout stroke={2} />
-            ) : (
-              <IconLogout stroke={1} />
-            )}{" "}
-            Log out
           </Link>
         </div>
       </div>

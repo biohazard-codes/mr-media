@@ -1,12 +1,13 @@
 import { IconEdit } from "@tabler/icons-react";
-import { IconHeart } from "@tabler/icons-react";
+
+import { IconPhoto } from "@tabler/icons-react";
 
 function Profile() {
   const usr = "userName";
   const post = "1 ";
   return (
-    <>
-      <div className="min-w-50 flex md:flex-row flex-col justify-between mb-30  md:px-50">
+    <section>
+      <div className="min-w-50 flex md:flex-row flex-col justify-between mb-20  md:px-50">
         <div className="flex flex-row justify-left">
           <img
             src="/profilePlaceholder.png"
@@ -27,6 +28,11 @@ function Profile() {
           <IconEdit stroke={2} /> Edit Profile
         </button>
       </div>
+
+      <h1 className="flex  border border-indigo-500 px-4 py-2 w-fit mx-auto rounded mb-30">
+        <IconPhoto stroke={2} />
+        &nbsp;Posts
+      </h1>
       {/* <div className="mx-50 w-90 h-87  border-none border-sky-400 rounded-3xl flex flex-col bg-[#192542] pb-20 relative">
         <img
           src="/post.png"
@@ -38,7 +44,7 @@ function Profile() {
           <span className="text-[18px] pr-2"> &nbsp; 2</span>
         </button>
       </div> */}
-    </>
+    </section>
   );
 }
 export default Profile;

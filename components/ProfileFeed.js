@@ -1,3 +1,5 @@
+import { IconHeart } from "@tabler/icons-react";
+
 function ProfileFeed(props) {
   return (
     <>

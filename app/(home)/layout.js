@@ -1,10 +1,9 @@
 "use client";
 import {
   IconDeviceTvOld,
-  IconUserCircle,
   IconLogout,
   IconCircleDashedPlus,
-  IconBrandSafari,
+  IconUsers,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -86,17 +85,17 @@ const layout = ({ children }) => {
 
             <span>
               <Link
-                href="/discover"
+                href="/members"
                 className={`flex hover:bg-slate-900 p-4 rounded-2xl mr-2 ${
-                  basePath === "/discover" ? "font-bold" : ""
+                  basePath === "/members" ? "font-bold" : ""
                 } `}
               >
-                {basePath === "/Discover" ? (
-                  <IconBrandSafari stroke={2} />
+                {basePath === "/members" ? (
+                  <IconUsers stroke={2} />
                 ) : (
-                  <IconBrandSafari stroke={1} />
+                  <IconUsers stroke={1} />
                 )}{" "}
-                &nbsp; Discover
+                &nbsp; Members
               </Link>
             </span>
 
@@ -190,17 +189,17 @@ const layout = ({ children }) => {
 
         <div>
           <Link
-            href="/discover"
+            href="/members"
             className={`flex flex-col  justify-center items-center ${
-              basePath === "/discover" ? "font-bold" : ""
+              basePath === "/members" ? "font-bold" : ""
             } `}
           >
-            {basePath === "/Discover" ? (
-              <IconBrandSafari stroke={2} />
+            {basePath === "/members" ? (
+              <IconUsers stroke={2} />
             ) : (
-              <IconBrandSafari stroke={1} />
+              <IconUsers stroke={1} />
             )}{" "}
-            Discover
+            Members
           </Link>
         </div>
       </div>

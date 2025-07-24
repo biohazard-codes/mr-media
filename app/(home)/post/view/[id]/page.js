@@ -4,12 +4,12 @@ import { IconHeart } from "@tabler/icons-react";
 
 function PreviewPost() {
   return (
-    <div className="flex justify-self-center md:px-64 px-4 md:mt-4 mt-20 ">
+    <div className="flex justify-center md:mt-4 mt-20 overflow-hidden ">
       <div className="  flex md:flex-row flex-col  rounded-[16px] w-full max-w-screen-md  ">
         <div className="bg-slate-800 rounded-tl-2xl md:rounded-bl-2xl rounded-tr-2xl md:rounded-tr-[0px] p-1 ">
           <img
             src="/mr.png"
-            className=" justify-start h-auto w-screen rounded-2xl object-cover "
+            className=" justify-start md:min-w-full rounded-2xl object-cover "
           />
         </div>
         <div className="flex flex-col border border-slate-800  bg-slate-800 p-4 md:rounded-tr-2xl rounded-bl-2xl md:rounded-bl-[0px] rounded-br-2xl">
@@ -30,7 +30,7 @@ function PreviewPost() {
             </div>
 
             {/* Edit and Delete block aka action */}
-            <div className="flex flex-row md:pl-50">
+            <div className="flex flex-row gap-2">
               <button className="flex cursor-pointer">
                 <span className="text-sky-500">
                   {" "}
@@ -46,7 +46,7 @@ function PreviewPost() {
 
           <div className="flex flex-col border-t border-t-sky-600 md:w-md">
             <p className="mt-6"> Mr Media -Coming Soon !!</p>
-            <p className="text-gray-400 md:mb-18">
+            <p className="text-gray-400 md:mb-25">
               #mrmedia #soon #Bio #Ryomen
             </p>
           </div>

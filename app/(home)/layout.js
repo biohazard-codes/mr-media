@@ -21,7 +21,7 @@ const layout = ({ children }) => {
         <main className="md:ml-70 flex-1 p-[8px] bg-slate-900 min-h-screen mb-10 md:mb-0 ">
           {children}
         </main>
-        <div className=" min-h-screen md:fixed w-70 hidden md:block ">
+        <div className=" min-h-screen md:fixed w-70 hidden md:block max-w-70">
           {/* this line ^ */}
 
           <div className=" flex md:flex-col flex-row pl-4 [&_span]:pb-10 w-full">

@@ -1,6 +1,5 @@
 import { IconEdit } from "@tabler/icons-react";
-import { IconTrash } from "@tabler/icons-react";
-import { IconHeart } from "@tabler/icons-react";
+import { IconTrash, IconHeart } from "@tabler/icons-react";
 
 function PreviewPost() {
   return (

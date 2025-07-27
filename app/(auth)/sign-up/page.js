@@ -12,7 +12,10 @@ function Signup() {
     reset,
     formState: { errors },
   } = useForm();
+
   const [selectedImage, setSelectedImage] = useState();
+
+  const x = "y";
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];

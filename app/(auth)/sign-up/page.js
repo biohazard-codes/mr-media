@@ -1,10 +1,18 @@
 "use client";
+import { signup } from "@/app/backend/db/actions/signup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import Link from "next/link";
 
 function Signup() {
+  //  useEffect(() => {
+  //   const localData = localStorage.getItem("Current User");
+  //   if (localData) {
+  //     redirect("/");
+  //   }
+  // }, []);
+
   const {
     register,
     handleSubmit,
@@ -14,8 +22,6 @@ function Signup() {
   } = useForm();
 
   const [selectedImage, setSelectedImage] = useState();
-
-  const x = "y";
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -29,7 +35,19 @@ function Signup() {
       toast.error("Only image is allowed.");
     }
   };
-  const onSubmit = (data) => console.log(data);
+
+  async function onSubmit(data) {
+    const formData = new FormData();
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("userName", data.userName);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("image", data.image);
+
+    let result = await signup(formData);
+    console.log(result);
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-950">

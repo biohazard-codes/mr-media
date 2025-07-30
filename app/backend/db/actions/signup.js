@@ -18,7 +18,9 @@ async function signup(formData) {
 
   const hashedPassword = await bcrypt.hash(formData.get("password"), 10);
 
-  const isEmailAlreadyExsit = await User.findOne({ email: data.email });
+  const isEmailAlreadyExsit = await User.findOne({
+    email: formData.get("email"),
+  });
 
   if (isEmailAlreadyExsit) {
     return {
@@ -27,7 +29,9 @@ async function signup(formData) {
     };
   }
 
-  const isUserAlreadyExsit = await User.findOne({ userName: data.userName });
+  const isUserAlreadyExsit = await User.findOne({
+    userName: formData.get("userName"),
+  });
   if (isUserAlreadyExsit) {
     return {
       success: false,

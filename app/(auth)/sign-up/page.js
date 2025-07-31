@@ -2,16 +2,17 @@
 import { signup } from "@/app/backend/db/actions/signup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { redirect } from "next/navigation";
 import { toast, Toaster } from "react-hot-toast";
 import Link from "next/link";
 
 function Signup() {
-  //  useEffect(() => {
-  //   const localData = localStorage.getItem("Current User");
-  //   if (localData) {
-  //     redirect("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    const localData = localStorage.getItem("Current User");
+    if (localData) {
+      redirect("/");
+    }
+  }, []);
 
   const {
     register,
@@ -37,6 +38,11 @@ function Signup() {
   };
 
   async function onSubmit(data) {
+    if (!selectedImage) {
+      toast.error("Profile Picture is required");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("firstName", data.firstName);
     formData.append("lastName", data.lastName);
@@ -46,6 +52,7 @@ function Signup() {
     formData.append("image", data.image);
 
     let result = await signup(formData);
+    redirect("/sign-in");
     console.log(result);
   }
 
@@ -74,14 +81,15 @@ function Signup() {
           id="inputFile"
           className="mb-4 text-white hidden"
           onChange={handleImageChange}
-          {...register("image", {
-            required: "Profile Picture is required",
-          })}
+
+          // {...register("image", {
+          //   required: "Profile Picture is required",
+          // })}
         />
 
-        {errors.image && (
+        {/* {errors.image && (
           <p className="text-red-600 mb-4 mt-[-10px]">{errors.image.message}</p>
-        )}
+        )} */}
 
         <div className="flex flex-row justify-between gap-2 items-center">
           <input

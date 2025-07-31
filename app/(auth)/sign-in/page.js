@@ -1,24 +1,42 @@
 "use client";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { signin } from "@/app/backend/db/actions/signin";
 
 function Login() {
+  useEffect(() => {
+    const localData = localStorage.getItem("Current User");
+    if (localData) {
+      redirect("/");
+    }
+  }, []);
+
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const {
     register,
     handleSubmit,
-    // setValue,
-    // reset,
     formState: { errors },
   } = useForm();
 
   async function onSubmit(data) {
-    await console.log(data);
-    // let result = await logIn(data);
-    // if (result.success) {
-    //   localStorage.setItem("Current User", JSON.stringify(result.user));
-    //   redirect("/");
-    // }
+    // await console.log(data);
+    let result = await signin(data);
+    if (result.success) {
+      localStorage.setItem("Current User", JSON.stringify(result.user));
+      redirect("/");
+    }
+
+    if (result.success) {
+      setError(result.success);
+    } else {
+      setError(!result.success);
+    }
+    setErrorMessage(result.message);
   }
 
   return (
@@ -54,6 +72,15 @@ function Login() {
             {errors.password.message}
           </p>
         )}
+
+        <p
+          className={`text-center mb-4 ${
+            error ? "text-red-500" : "text-green-500"
+          }`}
+        >
+          {errorMessage}
+        </p>
+
         <p className="mb-6">
           Don't have an account?{" "}
           <Link href="/sign-up">

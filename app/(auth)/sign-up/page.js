@@ -74,7 +74,15 @@ function Signup() {
           id="inputFile"
           className="mb-4 text-white hidden"
           onChange={handleImageChange}
+          {...register("image", {
+            required: "Profile Picture is required",
+          })}
         />
+
+        {errors.image && (
+          <p className="text-red-600 mb-4 mt-[-10px]">{errors.image.message}</p>
+        )}
+
         <div className="flex flex-row justify-between gap-2 items-center">
           <input
             type="text"

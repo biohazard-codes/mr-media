@@ -6,9 +6,17 @@ import {
   IconUsers,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { usePathname, redirect } from "next/navigation";
 
 const layout = ({ children }) => {
+  useEffect(() => {
+    const localData = localStorage.getItem("Current User");
+    if (!localData) {
+      redirect("sign-in");
+    }
+  }, []);
+
   const pathName = usePathname();
 
   const pathSegments = pathName.split("/");

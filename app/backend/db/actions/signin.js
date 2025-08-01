@@ -29,7 +29,9 @@ async function signin(data) {
       message: "Login successfull !",
       user: {
         userName: isUserExist.userName,
-        email: isUserExist.email,
+        id: isUserExist._id.toString(),
+        firstName: isUserExist.firstName,
+        image: isUserExist.image,
       },
     };
   } else {

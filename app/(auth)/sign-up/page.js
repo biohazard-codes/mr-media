@@ -1,7 +1,7 @@
 "use client";
 import { signup } from "@/app/backend/db/actions/signup";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import { toast, Toaster } from "react-hot-toast";
 import Link from "next/link";

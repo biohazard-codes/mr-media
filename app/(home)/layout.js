@@ -6,14 +6,26 @@ import {
   IconUsers,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, redirect } from "next/navigation";
 
 const layout = ({ children }) => {
+  // let userId = JSON.parse(localStorage.getItem("Current User")).id;
+
+  const [userName, setUserName] = useState("User");
+  const [profilePlaceholder, setProfilePlaceholder] = useState(
+    "/profilePlaceholder.png"
+  );
+  const [firstName, setFirstName] = useState("Name");
+
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
     if (!localData) {
       redirect("sign-in");
+    } else {
+      setUserName(JSON.parse(localData).userName);
+      setProfilePlaceholder(JSON.parse(localData).image);
+      setFirstName(JSON.parse(localData).firstName);
     }
   }, []);
 
@@ -22,7 +34,6 @@ const layout = ({ children }) => {
   const pathSegments = pathName.split("/");
   const basePath = `/${pathSegments[1]}`;
 
-  const userName = "sky";
   return (
     <>
       <div className="flex flex-row  ">
@@ -38,20 +49,22 @@ const layout = ({ children }) => {
 
             <span className="">
               <Link
-                href="/profile/1"
+                href="/profile/"
                 className={`flex hover:bg-slate-900 p-4 rounded-2xl mr-2  w-auto flex-row items-center `}
               >
                 <img
-                  src="/profilePlaceholder.png"
+                  src={"/uploads/" + profilePlaceholder}
                   className=" rounded-full h-10 w-10 object-cover"
                 ></img>
                 <span
                   className={`flex flex-col justify-center mb-[-80px] ${
-                    basePath === "/profile/1" ? "font-bold" : ""
+                    basePath === "href={`/profile/${userId}`}"
+                      ? "font-bold"
+                      : ""
                   } `}
                 >
-                  <span>&nbsp; Profile</span>
-                  <span className="mt-[-50px] ml-2  text-gray-600">
+                  <span>&nbsp; {firstName}</span>
+                  <span className="mt-[-44px] ml-2  text-gray-600">
                     @{userName}
                   </span>
                 </span>

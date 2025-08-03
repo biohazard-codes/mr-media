@@ -1,22 +1,42 @@
+"use client";
 import { IconEdit } from "@tabler/icons-react";
-
+import { useState, useEffect } from "react";
 import { IconPhoto } from "@tabler/icons-react";
 
 function Profile() {
-  const usr = "userName";
+  const [userName, setUserName] = useState("userName");
+  const [firstName, setFirstName] = useState("Full");
+  const [lastName, setLastName] = useState("Name");
+  const [image, setImage] = useState(null);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const localData = localStorage.getItem("Current User");
+    if (!localData) {
+      redirect("sign-in");
+    } else {
+      setUserName(JSON.parse(localData).userName);
+      setImage(JSON.parse(localData).image);
+      setFirstName(JSON.parse(localData).firstName);
+      setLastName(JSON.parse(localData).lastName);
+      setUserId(JSON.parse(localData).id);
+      //   //your code
+    }
+  }, []);
+
   const post = "1 ";
   return (
     <section>
       <div className="min-w-50 flex md:flex-row flex-col justify-between mb-20 md:mt-0 mt-16 md:px-50">
         <div className="flex md:flex-row flex-col md:justify-left items-center justify-center ">
           <img
-            src="/profilePlaceholder.png"
+            src={"/uploads/" + image}
             className="h-38 w-38 mt-4 mb-4 rounded-full object-cover cursor-pointer"
           />
           <div className="md:pl-8 pt-6 text-center">
-            <p className="text-3xl font-bold">Full Name</p>
-            <p className="text-[18px] text-slate-500 font-medium md:mb-10">
-              @{usr}
+            <p className="text-3xl font-bold">{firstName + " " + lastName}</p>
+            <p className="text-[18px] text-slate-500 font-medium md:mb-10 md:text-left">
+              @{userName}
             </p>
             <p className="">
               <span className="text-sky-300 ">{post}</span>Posts

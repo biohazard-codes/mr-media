@@ -31,6 +31,7 @@ async function signin(data) {
         userName: isUserExist.userName,
         id: isUserExist._id.toString(),
         firstName: isUserExist.firstName,
+        lastName: isUserExist.lastName,
         image: isUserExist.image,
       },
     };

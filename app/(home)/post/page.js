@@ -1,11 +1,24 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { IconPhotoPlus } from "@tabler/icons-react";
 import { IconLibraryPhoto } from "@tabler/icons-react";
+import { createPost } from "@/app/backend/db/actions/post";
+import { redirect } from "next/dist/server/api-utils";
 
 function Post() {
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const localData = localStorage.getItem("Current User");
+    if (!localData) {
+      redirect("sign-in");
+    } else {
+      setUserId(JSON.parse(localData).id);
+    }
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -31,7 +44,29 @@ function Post() {
       toast.error("Only image is allowed.");
     }
   };
-  const onSubmit = (data) => console.log(data);
+  async function onSubmit(data) {
+    if (!selectedImage) {
+      toast.error("Post is required");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("caption", data.caption);
+    formData.append("image", data.image);
+    formData.append("tags", data.tags);
+    formData.append("author", userId);
+
+    try {
+      let result = await createPost(formData);
+      toast.success("Successfully Posted!");
+      reset();
+      setSelectedImage(null);
+    } catch (error) {
+      toast.error("Failed to post!");
+    }
+
+    //  console.log(result);
+  }
 
   return (
     <section className="md:px-96">
@@ -43,7 +78,7 @@ function Post() {
       <form className="md:p-10 space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <label className="mb-4 block"> Caption </label>
         <textarea
-          className="h-40 w-full border border-gray-700 shadow shadow-blue-800 rounded   bg-gray-800"
+          className="h-40 w-full border border-gray-700 shadow shadow-blue-800 rounded p-2 bg-gray-800"
           {...register("caption")}
         ></textarea>
 

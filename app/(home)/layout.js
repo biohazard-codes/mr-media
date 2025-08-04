@@ -49,7 +49,7 @@ const layout = ({ children }) => {
 
             <span className="">
               <Link
-                href="/profile/"
+                href="/profile/view/1"
                 className={`flex hover:bg-slate-900 p-4 rounded-2xl mr-2  w-auto flex-row items-center `}
               >
                 <img
@@ -58,9 +58,7 @@ const layout = ({ children }) => {
                 ></img>
                 <span
                   className={`flex flex-col justify-center mb-[-80px] ${
-                    basePath === "href={`/profile/${userId}`}"
-                      ? "font-bold"
-                      : ""
+                    basePath === "href=/profile/view/1-x" ? "font-bold" : ""
                   } `}
                 >
                   <span>&nbsp; {firstName}</span>

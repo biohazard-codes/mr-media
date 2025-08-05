@@ -57,4 +57,10 @@ async function signup(formData) {
   };
 }
 
-export { signup };
+async function allUsers() {
+  await connectdb();
+  const allDataUser = await User.find({}).sort({ createdAt: -1 });
+  return allDataUser;
+}
+
+export { signup, allUsers };

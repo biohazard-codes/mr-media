@@ -6,31 +6,25 @@ import MemberRow from "@/components/MemberRow";
 async function People() {
   const allDataUser = await allUsers();
   return (
-    <section className="px-4">
-      <Toaster />
-      <div className="[&_td]:text-left text-left">
-        <table className="  bg-slate-800  [&_th]:px-8 [&_th]:py-2 [&_td]:p-6 w-[100%] [&_th]:text-slate-400 [&_td]:text-center rounded-[4px]">
-          <thead>
-            <tr>
-              <th>User</th>
+    <>
+      <h1 className="font-medium text-3xl flex justify-center md:justify-start md:pl-20 md:mt-8 mt-16">
+        All Members
+      </h1>
+      {/* <section className="grid grid-cols-1  md:grid-cols-3 gap-10 justify-items-center p-10"> */}
+      <section className="flex flex-wrap justify-center  gap-6 p-10">
+        <Toaster />
 
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody className="[&_tr]:hover:bg-indigo-950 [&_tr]:odd:bg-slate-700">
-            {allDataUser.map((p) => (
-              <MemberRow
-                key={p.id}
-                id={p.id}
-                userName={p.userName}
-                firstName={p.firstName}
-                image={p.image}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
+        {allDataUser.map((p) => (
+          <MemberRow
+            key={p.id}
+            id={p.id}
+            userName={p.userName}
+            firstName={p.firstName}
+            image={p.image}
+          />
+        ))}
+      </section>
+    </>
   );
 }
 

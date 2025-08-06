@@ -15,32 +15,14 @@ function MemberRow(props) {
 
   return (
     <>
-      <tr>
-        <td>
-          <span
-            className={`flex p-4 rounded-2xl mr-2  w-auto flex-row items-center `}
-          >
-            <img
-              src={pfp}
-              className=" rounded-full h-10 w-10 object-cover"
-            ></img>
-            <span className={"flex flex-col justify-center"}>
-              <span>&nbsp; {props.firstName}</span>
-              <span className="mt-[-44px] ml-2  text-gray-600">
-                @{props.userName}
-              </span>
-            </span>
-          </span>
-        </td>
-
-        <td className="flex flex-row text-indigo-500 gap-16">
-          {" "}
-          <button className="flex hover:cursor-pointer mt-6">
-            <IconEye stroke={2} />
-            <Link href={"products/view/" + props.id}> Preview</Link>
-          </button>
-        </td>
-      </tr>
+      <div className="flex flex-col items-center space-y-2 p-6 border border-slate-800 rounded-2xl w- max-w-[100%] min-w-[30%] bg-gray-800">
+        <img src={pfp} className="rounded-full h-16 w-16 object-cover" />
+        <div>&nbsp; {props.firstName}</div>
+        <div className="text-gray-600"> @{props.userName}</div>
+        <button className="rounded bg-sky-600 px-8 py-2 text-white">
+          <Link href={`/profile/view/${props.id}`}>View</Link>
+        </button>
+      </div>
     </>
   );
 }

@@ -63,4 +63,10 @@ async function allUsers() {
   return allDataUser;
 }
 
-export { signup, allUsers };
+async function viewUser(id) {
+  await connectdb();
+  const view = await User.findById(id);
+  return view;
+}
+
+export { signup, allUsers, viewUser };

@@ -8,7 +8,6 @@ import { createPost } from "@/app/backend/db/actions/post";
 import { redirect } from "next/dist/server/api-utils";
 
 function Post() {
-  const slim = "string";
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
@@ -36,11 +35,22 @@ function Post() {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
 
+    if (!file) return;
+
     const extension = file.name.split(".").pop();
 
     if (extension === "jpg" || extension === "png" || extension === "jpeg") {
-      setSelectedImage(file);
-      setValue("image", file);
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+
+      img.onload = () => {
+        if (img.width >= 800 && img.height >= 600) {
+          setSelectedImage(file);
+          setValue("image", file);
+        } else {
+          toast.error("Image must be at least 800x600 resolution.");
+        }
+      };
     } else {
       toast.error("Only image is allowed.");
     }

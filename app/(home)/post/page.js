@@ -44,7 +44,7 @@ function Post() {
       img.src = URL.createObjectURL(file);
 
       img.onload = () => {
-        if (img.width >= 800 && img.height >= 600) {
+        if (img.width >= 500 && img.height >= 500) {
           setSelectedImage(file);
           setValue("image", file);
         } else {

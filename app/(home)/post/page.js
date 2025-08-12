@@ -8,7 +8,7 @@ import { createPost } from "@/app/backend/db/actions/post";
 import { redirect } from "next/dist/server/api-utils";
 
 function Post() {
-  const fle = "flem";
+  const fle = "fm";
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {

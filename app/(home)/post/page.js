@@ -8,7 +8,7 @@ import { createPost } from "@/app/backend/db/actions/post";
 import { redirect } from "next/dist/server/api-utils";
 
 function Post() {
-  const fle = "sdbgf";
+  const fle = "sgf";
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {

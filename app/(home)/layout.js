@@ -10,19 +10,20 @@ import { useEffect, useState } from "react";
 import { usePathname, redirect } from "next/navigation";
 
 const layout = ({ children }) => {
-  // let userId = JSON.parse(localStorage.getItem("Current User")).id;
-
   const [userName, setUserName] = useState("User");
   const [profilePlaceholder, setProfilePlaceholder] = useState(
     "/profilePlaceholder.png"
   );
   const [firstName, setFirstName] = useState("Name");
 
+  const [userId, setUserId] = useState(null);
+
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
     if (!localData) {
       redirect("sign-in");
     } else {
+      setUserId(JSON.parse(localData).id);
       setUserName(JSON.parse(localData).userName);
       setProfilePlaceholder(JSON.parse(localData).image);
       setFirstName(JSON.parse(localData).firstName);
@@ -49,7 +50,7 @@ const layout = ({ children }) => {
 
             <span className="">
               <Link
-                href="/profile/view/1"
+                href={`/profile/view/` + userId}
                 className={`flex hover:bg-slate-900 p-4 rounded-2xl mr-2  w-auto flex-row items-center `}
               >
                 <img
@@ -58,7 +59,9 @@ const layout = ({ children }) => {
                 ></img>
                 <span
                   className={`flex flex-col justify-center mb-[-80px] ${
-                    basePath === "href=/profile/view/1-x" ? "font-bold" : ""
+                    basePath === "href={`/profile/view/`+userId}"
+                      ? "font-bold"
+                      : ""
                   } `}
                 >
                   <span>&nbsp; {firstName}</span>

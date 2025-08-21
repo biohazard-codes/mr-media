@@ -19,7 +19,7 @@ function ProfileClient({ user, id }) {
     }
   }, [id]);
 
-  const post = "1 ";
+  const post = "0 ";
   return (
     <section>
       <div className="min-w-50 flex md:flex-row flex-col justify-between mb-20 md:mt-0 mt-16 md:px-50">

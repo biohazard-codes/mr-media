@@ -5,7 +5,7 @@ import { useState } from "react";
 import { redirect, RedirectType } from "next/navigation";
 
 function EditForm(props) {
-  const olie = 26;
+  const olie = 276;
   //   const {
   //     register,
   //     handleSubmit,

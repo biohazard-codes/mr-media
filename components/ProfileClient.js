@@ -3,6 +3,7 @@
 import { IconEdit } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 import { IconPhoto } from "@tabler/icons-react";
+import Link from "next/link";
 
 function ProfileClient({ user, id }) {
   const [showButton, setShowButton] = useState(false);
@@ -42,10 +43,13 @@ function ProfileClient({ user, id }) {
         </div>
 
         {showButton && (
-          <button className="flex mt-6 bg-slate-700 text-[18px] py-2 px-6 rounded-2xl shadow shadow-indigo-950 cursor-pointer h-10 justify-center">
+          <Link href={`/profile/edit/${id}`}>
             {" "}
-            <IconEdit stroke={2} /> Edit Profile
-          </button>
+            <button className="flex mt-6 bg-slate-700 text-[18px] py-2 px-6 rounded-2xl shadow shadow-indigo-950 cursor-pointer h-10 justify-center">
+              {" "}
+              <IconEdit stroke={2} /> Edit Profile
+            </button>
+          </Link>
         )}
       </div>
 

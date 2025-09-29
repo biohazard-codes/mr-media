@@ -54,7 +54,7 @@ function EditForm({ user, id }) {
       <Toaster />
       <h1 className=" flex font-medium text-3xl text-left md:mb-2 md:mt-8 mt-16 pl-2 mb-4">
         <IconFilePencil stroke={2} size={30} className="text-3xl mt-0.5" />
-        &nbsp; Edit Porfile
+        &nbsp; Edit Porfilee
       </h1>
 
       <form className="md:py-10 space-y-6">

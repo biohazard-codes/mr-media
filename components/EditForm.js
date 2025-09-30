@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { redirect, RedirectType } from "next/navigation";
 import { IconFilePencil } from "@tabler/icons-react";
-import { IconLibraryPhoto } from "@tabler/icons-react";
+// import { IconLibraryPhoto } from "@tabler/icons-react";
+import { updateProfile } from "@/app/backend/db/actions/signup";
 
 function EditForm({ user, id }) {
   const olie = 2226;
@@ -35,19 +36,19 @@ function EditForm({ user, id }) {
     reset();
   };
 
-  //   async function submit(data) {
-  //     const formData = new FormData();
-  //     formData.append("productName", data.productName);
-  //     formData.append("quantity", data.quantity);
-  //     formData.append("price", data.price);
-  //     formData.append("image", data.image);
-  //     const result = await updateProduct(props.id, formData);
+  async function onSubmit(data) {
+    const formData = new FormData();
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("userName", data.userName);
+    formData.append("image", data.image);
+    const result = await updateProfile(id, formData);
 
-  //     console.log(result);
-  //     toast.success("Product updated successfully!");
+    console.log(result);
+    toast.success("Profile updated successfully!");
 
-  //     redirect("/products", RedirectType.push);
-  //   }
+    redirect(`/profile/view/` + [id], RedirectType.push);
+  }
 
   return (
     <section className="md:px-96">
@@ -57,7 +58,7 @@ function EditForm({ user, id }) {
         &nbsp; Edit Porfilee
       </h1>
 
-      <form className="md:py-10 space-y-6">
+      <form className="md:py-10 space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <label className=" text-center block">Change Profile Picture</label>
 
         <label
@@ -88,7 +89,8 @@ function EditForm({ user, id }) {
             <label className="mb-4 block"> First Name </label>
             <input
               className="w-full border border-gray-700 shadow shadow-blue-800 rounded p-2 bg-gray-800"
-              value={user.firstName}
+              defaultValue={user.firstName}
+              {...register("firstName")}
             />
           </div>
 
@@ -96,7 +98,8 @@ function EditForm({ user, id }) {
             <label className="mb-4 block"> Last Name </label>
             <input
               className="w-full border border-gray-700 shadow shadow-blue-800 rounded p-2 bg-gray-800"
-              value={user.lastName}
+              defaultValue={user.lastName}
+              {...register("lastName")}
             />
           </div>
         </div>
@@ -104,7 +107,8 @@ function EditForm({ user, id }) {
         <label className="mb-4 block"> User Name </label>
         <input
           className="w-full border border-gray-700 shadow shadow-blue-800 rounded p-2 bg-gray-800"
-          value={"@" + user.userName}
+          defaultValue={user.userName}
+          {...register("userName")}
         />
 
         {/* buttons */}

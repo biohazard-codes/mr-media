@@ -69,14 +69,13 @@ async function viewUser(id) {
   return view;
 }
 
-
-
 async function updateProfile(id, formData) {
-  await dbConnect();
-  let product = {
-    productName: formData.get("productName"),
-    quantity: formData.get("quantity"),
-    price: formData.get("price"),
+  await connectdb();
+
+  let user = {
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    userName: formData.get("userName"),
   };
 
   const file = formData.get("image");
@@ -88,17 +87,16 @@ async function updateProfile(id, formData) {
     const buffer = Buffer.from(await file.arrayBuffer());
     fs.writeFileSync(uploadPath, buffer);
 
-    product["image"] = fileName;
+    user.image = fileName;
+
+    // Quite sus have to check this out
   }
 
-  const updatedProduct = await Product.findByIdAndUpdate(id, product);
-
-  // const plainProduct = JSON.parse(JSON.stringify(updatedProduct));
+  const updatedUser = await User.findByIdAndUpdate(id, user);
 
   return {
-    message: "Product updated successfully!",
+    message: "User updated successfully!",
   };
 }
 
-
-export { signup, allUsers, viewUser };
+export { signup, allUsers, viewUser, updateProfile };

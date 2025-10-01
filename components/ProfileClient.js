@@ -4,6 +4,7 @@ import { IconEdit } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 import { IconPhoto } from "@tabler/icons-react";
 import Link from "next/link";
+import { allPosts } from "@/app/backend/db/actions/post";
 
 function ProfileClient({ user, id }) {
   const [showButton, setShowButton] = useState(false);
@@ -57,17 +58,12 @@ function ProfileClient({ user, id }) {
         <IconPhoto stroke={2} />
         &nbsp;Posts
       </h1>
-      {/* <div className="mx-50 w-90 h-87  border-none border-sky-400 rounded-3xl flex flex-col bg-[#192542] pb-20 relative">
+      <div className="mx-90  ">
         <img
           src="/post.png"
-          className="object-cover rounded-3xl border-1 w-full border-sky-400"
+          className="object-none rounded-3xl border-1 w-50 h-87  border-sky-400"
         />
-
-        <button className="absolute bottom-2 left-2 p-1 flex flex-row ">
-          <IconHeart stroke={2} />
-          <span className="text-[18px] pr-2"> &nbsp; 2</span>
-        </button>
-      </div> */}
+      </div>
     </section>
   );
 }

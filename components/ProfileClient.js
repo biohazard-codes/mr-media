@@ -4,7 +4,7 @@ import { IconEdit } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 import { IconPhoto } from "@tabler/icons-react";
 import Link from "next/link";
-import { allPosts } from "@/app/backend/db/actions/post";
+
 
 function ProfileClient({ user, id }) {
   const [showButton, setShowButton] = useState(false);

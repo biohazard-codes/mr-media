@@ -8,8 +8,6 @@ import { IconFilePencil } from "@tabler/icons-react";
 import { updateProfile } from "@/app/backend/db/actions/signup";
 
 function EditForm({ user, id }) {
-  const olie = 2226;
-
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
 

@@ -56,4 +56,39 @@ async function deletePost(id) {
   return JSON.parse(JSON.stringify(removePost));
 }
 
-export { createPost, allPosts, getPostsByAuthor, postPreview, deletePost };
+async function updatePost(id, formData) {
+  await connectdb();
+
+  let post = {
+    caption: formData.get("caption"),
+
+    tags: formData.get("tags"),
+  };
+
+  const file = formData.get("image");
+
+  if (file instanceof Blob) {
+    const extension = file.name.split(".").pop();
+    const fileName = uuidv4() + "." + extension;
+    const uploadPath = path.join(process.cwd(), "public", "posts", fileName);
+    const buffer = Buffer.from(await file.arrayBuffer());
+    fs.writeFileSync(uploadPath, buffer);
+
+    post.image = fileName;
+
+    // Quite sus have to check this out
+  }
+
+  const updatedPost = await Post.findByIdAndUpdate(id, post).populate("author");
+
+  return JSON.parse(JSON.stringify(updatedPost));
+}
+
+export {
+  createPost,
+  allPosts,
+  getPostsByAuthor,
+  postPreview,
+  deletePost,
+  updatePost,
+};

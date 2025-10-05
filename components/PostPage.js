@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import { deletePost } from "@/app/backend/db/actions/post";
 import { redirect, RedirectType } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import Link from "next/link";
 
 function PostPage({ Post, id }) {
   const customStyles = {
@@ -84,12 +85,14 @@ function PostPage({ Post, id }) {
               {/* Edit and Delete block aka action */}
               {showButton && (
                 <div className="flex flex-row gap-0.5  ">
-                  <button className="flex cursor-pointer">
-                    <span className="text-sky-500">
-                      {" "}
-                      <IconEdit stroke={2} />
-                    </span>
-                  </button>
+                  <Link href={"/post/edit/" + id}>
+                    <button className="flex cursor-pointer">
+                      <span className="text-sky-500">
+                        {" "}
+                        <IconEdit stroke={2} />
+                      </span>
+                    </button>
+                  </Link>
                   &nbsp;
                   <button
                     onClick={openModal}

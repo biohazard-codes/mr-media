@@ -1,4 +1,3 @@
-"use server";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import { allUsers } from "@/app/backend/db/actions/signup";

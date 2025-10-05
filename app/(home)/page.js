@@ -1,4 +1,3 @@
-"use server";
 import HomeFeed from "@/components/HomeFeed";
 import { allPosts } from "../backend/db/actions/post";
 export const dynamic = "force-dynamic";

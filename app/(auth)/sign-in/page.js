@@ -5,12 +5,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { signin } from "@/app/backend/db/actions/signin";
+import { useRouter } from "next/navigation";
+
 export const dynamic = "force-dynamic";
 function Login() {
+  const router = useRouter();
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
     if (localData) {
-      redirect("/");
+      router.push("/");
     }
   }, []);
 
@@ -28,7 +31,7 @@ function Login() {
     let result = await signin(data);
     if (result.success) {
       localStorage.setItem("Current User", JSON.stringify(result.user));
-      redirect("/");
+      router.push("/");
     }
 
     if (result.success) {

@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import { toast, Toaster } from "react-hot-toast";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 export const dynamic = "force-dynamic";
 function Signup() {
+  const router = useRouter();
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
     if (localData) {
-      redirect("/");
+      router.push("/");
     }
   }, []);
 

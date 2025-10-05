@@ -55,7 +55,7 @@ function Signup() {
     formData.append("image", data.image);
 
     let result = await signup(formData);
-    redirect("/sign-in");
+    router.push("/sign-in");
     console.log(result);
   }
 

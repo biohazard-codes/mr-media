@@ -15,9 +15,6 @@ function HomeFeed(props) {
             <p className="ml-2 text-gray-500">{props.userName}</p>
           </div>
         </div>
-        <span className=" cursor-pointer">
-          <IconEdit stroke={2} />
-        </span>
       </div>
 
       <div className="mb-4">
@@ -31,7 +28,7 @@ function HomeFeed(props) {
         />
       </div>
       <p className="">
-        <button className="cursor-pointer">
+        <button className="cursor-pointer text-red-500">
           <IconHeart stroke={2} />
         </button>
       </p>

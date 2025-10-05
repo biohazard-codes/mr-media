@@ -5,16 +5,18 @@ import { toast, Toaster } from "react-hot-toast";
 import { IconPhotoPlus } from "@tabler/icons-react";
 import { IconLibraryPhoto } from "@tabler/icons-react";
 import { createPost } from "@/app/backend/db/actions/post";
-import { redirect } from "next/dist/server/api-utils";
+
+import { useRouter } from "next/navigation";
 
 function Post() {
-  const fle = "sagf";
+  const router = useRouter();
+
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
     if (!localData) {
-      redirect("sign-in");
+      router.push("sign-in");
     } else {
       setUserId(JSON.parse(localData).id);
     }

@@ -8,8 +8,10 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const layout = ({ children }) => {
+  const router = useRouter();
   const [userName, setUserName] = useState("User");
   const [profilePlaceholder, setProfilePlaceholder] = useState(
     "/profilePlaceholder.png"
@@ -21,7 +23,7 @@ const layout = ({ children }) => {
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
     if (!localData) {
-      redirect("sign-in");
+      router.push("sign-in");
     } else {
       setUserId(JSON.parse(localData).id);
       setUserName(JSON.parse(localData).userName);

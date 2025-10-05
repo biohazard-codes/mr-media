@@ -3,6 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import { allUsers } from "@/app/backend/db/actions/signup";
 import MemberRow from "@/components/MemberRow";
+export const dynamic = "force-dynamic";
 async function People() {
   const allDataUser = await allUsers();
   return (

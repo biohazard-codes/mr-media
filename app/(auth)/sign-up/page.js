@@ -7,7 +7,6 @@ import { toast, Toaster } from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export const dynamic = "force-dynamic";
 function Signup() {
   const router = useRouter();
   useEffect(() => {

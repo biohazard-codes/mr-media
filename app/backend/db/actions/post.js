@@ -38,4 +38,22 @@ async function allPosts() {
   return allPostedPosts;
 }
 
-export { createPost, allPosts };
+async function getPostsByAuthor(authorId) {
+  await connectdb();
+  const userPosts = await Post.find({ author: authorId })
+    .populate("author")
+    .sort({ createdAt: -1 });
+  return JSON.parse(JSON.stringify(userPosts));
+}
+
+async function postPreview(id) {
+  const singlePost = await Post.findById(id).populate("author");
+  return JSON.parse(JSON.stringify(singlePost));
+}
+
+async function deletePost(id) {
+  const removePost = await Post.findByIdAndDelete(id);
+  return JSON.parse(JSON.stringify(removePost));
+}
+
+export { createPost, allPosts, getPostsByAuthor, postPreview, deletePost };

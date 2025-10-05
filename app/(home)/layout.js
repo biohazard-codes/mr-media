@@ -159,14 +159,18 @@ const layout = ({ children }) => {
           </Link>
 
           <Link
-            href="/profile/1"
+            href={`/profile/view/` + userId}
             className="flex flex-col  justify-center pl-6 items-center"
           >
             <img
-              src="/profilePlaceholder.png"
+              src={"/uploads/" + profilePlaceholder}
               className=" rounded-full h-6 w-6 object-cover"
             ></img>
-            <p className={`  ${basePath === "/profile/1" ? "font-bold" : ""} `}>
+            <p
+              className={`  ${
+                basePath === "href={`/profile/view/`+userId}" ? "font-bold" : ""
+              } `}
+            >
               {" "}
               Profile
             </p>

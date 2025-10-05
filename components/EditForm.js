@@ -1,7 +1,7 @@
 "use client";
 import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { redirect, RedirectType } from "next/navigation";
 import { IconFilePencil } from "@tabler/icons-react";
 // import { IconLibraryPhoto } from "@tabler/icons-react";
@@ -9,6 +9,15 @@ import { updateProfile } from "@/app/backend/db/actions/signup";
 
 function EditForm({ user, id }) {
   const olie = 2226;
+
+  useEffect(() => {
+    const localData = localStorage.getItem("Current User");
+
+    const storedId = JSON.parse(localData).id;
+    if (id !== storedId) {
+      redirect(`/profile/view/` + [id], RedirectType.push);
+    }
+  }, []);
 
   const {
     register,

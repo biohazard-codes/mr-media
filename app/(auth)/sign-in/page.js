@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { signin } from "@/app/backend/db/actions/signin";
 import { useRouter } from "next/navigation";
 
-export const dynamic = "force-dynamic";
 function Login() {
   const router = useRouter();
   useEffect(() => {

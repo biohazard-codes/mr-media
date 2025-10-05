@@ -6,14 +6,16 @@ import { redirect, RedirectType } from "next/navigation";
 import { IconFilePencil } from "@tabler/icons-react";
 // import { IconLibraryPhoto } from "@tabler/icons-react";
 import { updateProfile } from "@/app/backend/db/actions/signup";
+import { useRouter } from "next/navigation";
 
 function EditForm({ user, id }) {
+  const router = useRouter();
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
 
     const storedId = JSON.parse(localData).id;
     if (id !== storedId) {
-      redirect(`/profile/view/` + [id], RedirectType.push);
+      router.push(`/profile/view/` + [id]);
     }
   }, []);
 

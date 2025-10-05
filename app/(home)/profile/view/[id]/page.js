@@ -1,7 +1,7 @@
 import { viewUser } from "@/app/backend/db/actions/signup";
 import ProfileClient from "@/components/ProfileClient";
 import { getPostsByAuthor } from "@/app/backend/db/actions/post";
-
+export const dynamic = "force-dynamic";
 async function Profile({ params }) {
   const { id } = await params;
   const user = await viewUser(id);

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import { toast, Toaster } from "react-hot-toast";
 import Link from "next/link";
-
+export const dynamic = "force-dynamic";
 function Signup() {
   useEffect(() => {
     const localData = localStorage.getItem("Current User");

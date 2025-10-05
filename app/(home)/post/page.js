@@ -6,7 +6,7 @@ import { IconPhotoPlus } from "@tabler/icons-react";
 import { IconLibraryPhoto } from "@tabler/icons-react";
 import { createPost } from "@/app/backend/db/actions/post";
 import { redirect } from "next/dist/server/api-utils";
-
+export const dynamic = "force-dynamic";
 function Post() {
   const fle = "sagf";
   const [userId, setUserId] = useState(null);

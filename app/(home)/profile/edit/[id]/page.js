@@ -1,6 +1,6 @@
 import EditForm from "@/components/EditForm";
 import { viewUser } from "@/app/backend/db/actions/signup";
-
+export const dynamic = "force-dynamic";
 async function EditProfile({ params }) {
   const { id } = await params;
   const user = await viewUser(id);

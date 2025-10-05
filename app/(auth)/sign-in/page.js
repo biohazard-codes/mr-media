@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { signin } from "@/app/backend/db/actions/signin";
-
+export const dynamic = "force-dynamic";
 function Login() {
   useEffect(() => {
     const localData = localStorage.getItem("Current User");
